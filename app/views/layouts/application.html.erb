@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SuperBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <style type="text/css">
+    body{
+      min-width: 400px;
+    }
+    .navbar{
+      border-radius: 0px;
+    }
+  </style>
+
+  <body>
+    <nav style="margin-bottom: 0px;" class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Superblog</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <% if user_signed_in? == false %>
+              <a href="/users/sign_in">Ingresar</a>
+            <% end %>
+          </li>
+          <li>
+            <% if user_signed_in? == false %>
+              <a href="/users/sign_up">Registrarse</a>
+            <% end %>
+          </li>
+          <li>
+            <% if user_signed_in? %>
+              <%= link_to "Salir", destroy_user_session_path, method: :delete %>
+            <% end %>
+          </li>
+          <li>
+            <% if user_signed_in? %>
+              <a href="/posts/new">Nuevo Post</a>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <% if flash[:notice] %>
+      <div class="alert alert-info alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <%= flash[:notice] %>    
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

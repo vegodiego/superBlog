@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <% @post.each do |i| %>
+        <div>
+          <h1><a href="/posts/<%= i.id %>"><%= i.title %></a></h1>
+          <p class="small">Publicado por <%= i.user.email %> el <%= i.user.created_at %></p>
+          <p><%= markdown(i.body[0..249]) %></p>
+          <% if i.user==current_user %>
+            <a href="/posts/<%= i.id %>/edit">Editar</a>
+            <a href="/posts/<%= i.id %>" data-method="delete" data-confirm="¿Estás seguro de eliminar este post?">Eliminar</a>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
