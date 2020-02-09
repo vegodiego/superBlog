@@ -4,7 +4,7 @@
       <% @post.each do |i| %>
         <div>
           <h1><a href="/posts/<%= i.id %>"><%= i.title %></a></h1>
-          <p class="small">Publicado por <%= i.user.email %> el <%= i.user.created_at %></p>
+          <p class="small">Publicado por <%= i.user.email %> el <%= i.created_at %></p>
           <p><%= markdown(i.body[0..249]) %></p>
           <% if i.user==current_user %>
             <a href="/posts/<%= i.id %>/edit">Editar</a>

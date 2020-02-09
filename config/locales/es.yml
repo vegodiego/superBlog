@@ -24,7 +24,7 @@ es:
       user:
         email: "Correo"
         password: "Contraseña"
-        password_confirmation: "Contraseña de confirmacion"
+        password_confirmation: "Contraseña de confirmación"
       post:
         title: "Título"
         body: "Cuerpo"
