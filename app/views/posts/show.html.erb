@@ -1,27 +1,25 @@
 <div class="container">
-	<br>
-	<a href="/posts">volver</a>
-	<h1><%= @post.title %></h1>
-	<p style="margin-bottom:40px;"><%= markdown(@post.body) %></p>
+    <br>
+    <a href="/posts">volver</a>
+    <h1><%= @post.title %></h1>
+    <p style="margin-bottom:40px;"><%= markdown(@post.body) %></p>
 
-	<% @postComments.each do |i| %>
-	  <div class="panel panel-default">
-	    <header class="panel-heading"><%= i.user.email %> comentó:</header>
-	    <div class="panel-body"><%= i.body %></div>
-	  </div>
-	<% end %>
+    <% @postComments.each do |i| %>
+      <div class="panel panel-default">
+        <header class="panel-heading"><%= i.user.email %> comentó:</header>
+        <div class="panel-body"><%= i.body %></div>
+      </div>
+    <% end %>
 
-	<% if user_signed_in? %>
-	  <%= form_for [@post, @comment] do |f| %>
-	    <div class="form-group">
-	    	<%= f.text_area :body, class: "form-control", placeholder: "Agregar comentario"  %>
-	    </div>
-	    <div class="actions">
-	    	<%= f.submit "comentar", class: "btn btn-primary" %>
-	    </div>
-	  <% end %>
-	<% end %>
-
-	
+    <% if user_signed_in? %>
+      <%= form_for [@post, @comment] do |f| %>
+        <div class="form-group">
+            <%= f.text_area :body, class: "form-control", placeholder: "Agregar comentario"  %>
+        </div>
+        <div class="actions">
+            <%= f.submit "comentar", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    <% end %>
 </div>
-  	
+    
